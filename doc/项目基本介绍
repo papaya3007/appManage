@@ -1,0 +1,23 @@
+本项目基于ssm框架（spring+springMVC+mybatis)完成
+mapper等使用mybatis-generator自动生成
+
+前端页面使用基于bootstrap的gentelella-master模板修改完成
+    GitHub地址https://github.com/puikinsh/gentelella
+
+
+版本控制使用idea自动的git进行
+
+
+项目结构
+src->main->java 存放java文件
+src->main->resources 存放资源配置文件文件
+src->main->webapp->WEB-INF->jsp 存放页面
+src-main-webapp-statics存放页面资源文件（js css images）
+
+
+项目的基本需求
+        进行app管理，
+  1 登陆，登出功能
+  2 app的上架下架
+  3 app的各种信息显示 修改
+

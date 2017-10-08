@@ -1,0 +1,13 @@
+@startuml
+start
+:点击新增app基础信息;
+:填写app基础信息;
+if(验证内容和格式) then(yes)
+  :验证通过;
+  :点击保存;
+  :系统保存信息并跳转到app列表面;
+  end
+else(no)
+    
+
+@enduml
