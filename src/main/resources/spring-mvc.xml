@@ -45,4 +45,28 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
     <mvc:resources location="WEB-INF/js/" mapping="/js/**"/>
     <mvc:resources location="WEB-INF/css/" mapping="/css/**"/>
     <mvc:resources mapping="/error/**" location="WEB-INF/jsp/error/"/>
+    <!-- 配置json数据 -->
+
+    <bean id="mappingJackson2HttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/json;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--shiro配置-->
+    <!--支持shiro对controller的方法级aop安全控制器-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <!--proxy 代理服务器-->
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
 </beans>

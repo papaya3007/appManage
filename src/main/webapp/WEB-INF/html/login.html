@@ -21,8 +21,31 @@
 
     <!-- Custom Theme Style -->
     <link href="../css/custom.min.css" rel="stylesheet">
+    <script src="../js/jquery-3.2.1.min.js" rel="script"></script>
   </head>
+<script>
+  $(function () {
+//      通过点击登陆按钮触发
+      $("#submit").click(function () {
+          var username = $("#username").val();
+          var password = $("#password").val();
+          if(username ==""||password==""){
+              alert("用户名或密码不能为空");
+          }else{
+              $.ajax({
+                  type: "POST",
+                  url: "/dologin",
+                  dataType: "json",
+                  data: {username: username, password: password},
+                  if(data=="{}"){
+                      alert("用户名或者密码输入错误")
+                  }
+              });
+          }
+      })
 
+  })
+</script>
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
@@ -31,16 +54,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
-              <h1>管理员登陆</h1>
+            <form >
+              <h1>ADMIN LOGIN</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Username" required="" id="username"/>
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Password" required="" id="password"/>
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
+                <input type="button" class="btn btn-default submit" formmethod="post" formaction="/dologin" id="submit">Log in</input>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 
@@ -91,7 +114,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> appx信息</h1>
+                  <h1><i class="fa fa-paw"></i> appx</h1>
                   <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                 </div>
               </div>

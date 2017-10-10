@@ -31,6 +31,7 @@
     <commons-codec.version>1.8</commons-codec.version>
     <commons-beanutils.version>1.8.3</commons-beanutils.version>
     <commons-compress.version>1.9</commons-compress.version>
+    <shiro.version>1.4.0</shiro.version>
     <!--jsp/servlet-->
     <standard.version>1.1.2</standard.version>
     <jstl.version>1.2</jstl.version>
@@ -42,7 +43,8 @@
     <webserver.port>9080</webserver.port>
     <!--log4j2-->
     <log4j2.version>2.8.2</log4j2.version>
-
+    <ehcache-core.version>2.6.9</ehcache-core.version>
+    <ehcache-web.version>2.0.4</ehcache-web.version>
   </properties>
   <dependencies>
     <!--测试单元junit包-->
@@ -265,6 +267,34 @@
       <artifactId>freemarker-gae</artifactId>
       <version>2.3.23</version>
     </dependency>
+
+
+    <!-- shiro -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-quartz</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
     <!--log4j2-->
 
     <dependency>
@@ -276,6 +306,18 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>${log4j2.version}</version>
+    </dependency>
+
+    <!-- ehcache -->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>${ehcache-core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-web</artifactId>
+      <version>${ehcache-web.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -304,5 +346,23 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
   </build>
 </project>

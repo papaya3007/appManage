@@ -13,7 +13,8 @@
 </head>
 <body>
 
-        Amazing 404 NOT FOUND
-          Why don't you ask the magic conch?
+Amazing 404 NOT FOUND
+<br>
+Ask the Magic Conch Shell
 </body>
 </html>
