@@ -24,8 +24,8 @@
     id, userCode, userName, userType, createdBy, creationDate, modifyBy, modifyDate, 
     userPassword
   </sql>
-  <select id="findByPasswordAndUsername" parameterType="string" resultMap="BaseResultMap">
-    SELECT * FROM backend_user WHERE userName=#{username} and password =#{password}
+  <select id="findByUsernameAndPassword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM backend_user WHERE userName=#{0} and userpassword=#{1}
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     <!--

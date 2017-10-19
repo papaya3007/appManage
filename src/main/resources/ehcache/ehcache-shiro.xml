@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ehcache name="shiroCache" updateCheck="false">
+    <!--缓存的存放路径-->
+    <!--java.io.tmpdir 为系统缓冲的临时目录-->
+<diskStore path="java.io.tmpdir"/>
+    <!--默认缓冲-->
+    <defaultCache
+        maxElementsInMemory="10000" eternal="false"
+        timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true"
+        maxElementsOnDisk="10000000" diskPersistent="false"
+        memoryStoreEvictionPolicy="LRU"/>
+
+    <cache name="authenticationCache" maxEntriesLocalHeap="2000"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="0"
+           overflowToDisk="false" statistics="true" />
+
+    <cache name="authorizationCache" maxEntriesLocalHeap="2000"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="0"
+           overflowToDisk="false" statistics="true">
+    </cache>
+
+
+    <cache name="shiro-activeSessionCache" maxEntriesLocalHeap="10000"
+           overflowToDisk="true" eternal="true" timeToLiveSeconds="0"
+           timeToIdleSeconds="0" diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="600" />
+
+<!--缓冲各项配置说明
+  name Cache的名称 必须是唯一的 ecache会把这个cache放到hashmap里
+
+  maxElementsinMemory 内存中最大的保存数量
+
+  maxElementsOnDisk diskstore（即缓冲保存目录里的对象) 默认为0 表示不设限制
+
+  eternal 表示是否为永恒数据 如果为true 那么超时设置无效
+
+  overflowToDisk 当内存中所保持的数据超过最大数的设置时是否要保存到硬盘上
+
+  timeToiddleSeconds 对象空闲时间设置超过设置的时间会自动失效 只有在eternal为false的情况下才有效 默认为0 表示对象一直有效
+
+  timeToLiveSecond 对象存活时间 默认为0表示一直有效 只有在eternal为false的情况下才有效
+
+  diskPersistent 是否在磁盘上持久话 指虚拟机jvm重启后数据是否还有效 默认为false
+
+  diskExpiryThreadIntervalSecond 对象检测线程的运行时间间隔，标识对象状态的线程多久运行一次
+
+  diskSpoolBUfferSizeMB diskstore使用的磁盘大小 默认为30mb，每个ecahce都死使用自己的diskstore
+
+  memoryStoreEvictionPolicy     当内存中的数据超过最大个数时向磁盘缓存时候的策略 默认为LRU 可选FIFO LFU
+
+-->
+</ehcache>

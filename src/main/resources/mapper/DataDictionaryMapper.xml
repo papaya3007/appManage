@@ -33,6 +33,12 @@
     from data_dictionary
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="APP_FLATFORM" resultType="String" parameterType="me.app.pojo.AppInfo">
+    SELECT valueName FROM data_dictionary WHERE typeName = '所属平台' AND valueId =${flatformid}
+  </select>
+  <select id="AppStatus" resultType="String" parameterType="me.app.pojo.AppInfo">
+    SELECT valueName FROM data_dictionary WHERE typeCode='APP_STATUS'and valueId=${status}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

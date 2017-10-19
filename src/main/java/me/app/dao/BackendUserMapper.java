@@ -57,7 +57,7 @@ public interface BackendUserMapper {
     int updateByPrimaryKey(BackendUser record);
 
 
-    BackendUser findByPasswordAndUsername(String username,  String password);
+    BackendUser findByUsernameAndPassword(String username,String password);
 
 
 }

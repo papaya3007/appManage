@@ -15,6 +15,8 @@
     <result column="modifyBy" property="modifyby" jdbcType="BIGINT" />
     <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
   </resultMap>
+
+
   <sql id="Base_Column_List" >
     <!--
       WARNING - @mbggenerated
@@ -32,6 +34,8 @@
     from app_category
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <!--分类查询-->
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     <!--
       WARNING - @mbggenerated

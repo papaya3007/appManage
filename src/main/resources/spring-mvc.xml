@@ -22,12 +22,12 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
     <!-- jsp视图 -->
     <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/jsp/"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="1"/>
     </bean>
 
-    <!-- 配置freeMarker视图解析器（可解析HTML） -->
+    <!-- 配置freeMarker视图解析器（可解析HTML） 需要freemarker的依赖包-->
     <!-- html视图解析器 必须先配置freemarkerConfig,注意html是没有prefix前缀属性的-->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/html/"/>
@@ -39,7 +39,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
         <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>
 
-    <mvc:view-controller path="/" view-name="redirect:/login.html" />
+    <mvc:view-controller path="/" view-name="redirect:/login" />
     <mvc:default-servlet-handler/>
     <mvc:resources location="WEB-INF/images/" mapping="/img/**"/>
     <mvc:resources location="WEB-INF/js/" mapping="/js/**"/>
@@ -56,17 +56,6 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
                 <value>application/json;charset=UTF-8</value>
             </list>
         </property>
-    </bean>
-
-    <!--shiro配置-->
-    <!--支持shiro对controller的方法级aop安全控制器-->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
-        <!--proxy 代理服务器-->
-        <property name="proxyTargetClass" value="true"/>
-    </bean>
-
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
     </bean>
 
 </beans>

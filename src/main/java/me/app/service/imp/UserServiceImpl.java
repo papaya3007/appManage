@@ -14,9 +14,9 @@ public class UserServiceImpl implements UserService{
     @Resource
     private BackendUserMapper backendUserMapper;
 
-    @Override
-    public BackendUser login(String username,String password) {
-        return this.backendUserMapper.findByPasswordAndUsername(username,password);
-    }
 
+    @Override
+    public BackendUser login(String username, String password) {
+        return this.backendUserMapper.findByUsernameAndPassword(username,password);
+    }
 }
